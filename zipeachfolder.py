@@ -37,16 +37,16 @@ class ZipEachFolder():
 
 if __name__ == '__main__':
     # get args
-    parser = argparse.ArgumentParser(description="Zip each folders under the specific path")
-    parser.add_argument("--input_path", help="Specify the path")
-    parser.add_argument("--output_path", help="Specify the path")
+    parser = argparse.ArgumentParser(description="Zip each folder under the target path")
+    parser.add_argument("--target_path", help="The target path")
+    parser.add_argument("--save_path", help="Save the zip file of target path in it ")
     args = parser.parse_args()
 
     # set init path
-    input_path = Path(args.input_path) if args.input_path else Path.cwd()
-    output_path = Path(args.output_path) if args.output_path else Path.cwd()
+    target_path = Path(args.target_path) if args.target_path else Path.cwd()
+    save_path = Path(args.save_path) if args.save_path else target_path.parent
 
-    zip_each_folder = ZipEachFolder(input_path, output_path)
+    zip_each_folder = ZipEachFolder(target_path, save_path)
     zip_each_folder.exec()
 
 
