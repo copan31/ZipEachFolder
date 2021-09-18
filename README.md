@@ -1,2 +1,2 @@
 # ZipEachFolder
-Zip all folders under the specific path
+Zip each folder under the specific input path
