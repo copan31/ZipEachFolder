@@ -3,6 +3,7 @@
 from pathlib import Path
 import argparse
 import shutil
+import traceback
 
 class ZipEachFolder():
 
@@ -26,7 +27,13 @@ class ZipEachFolder():
         # zip each folder
         for folder_path in folder_list:
             assert isinstance(folder_path, Path)
-            shutil.make_archive(self.output_path / folder_path.name, 'zip', folder_path)
+            try:
+                print(f'[Try zip] {folder_path}')
+                shutil.make_archive(self.output_path / folder_path.name, 'zip', folder_path)
+                print(f'Zip {folder_path} success. Moved in {self.output_path}')
+            except:
+                print(f'Zip {folder_path} failed.')
+                print(traceback.format_exc())
 
 if __name__ == '__main__':
     # get args
